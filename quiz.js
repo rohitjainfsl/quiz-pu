@@ -4,50 +4,61 @@ const scoreDivH2 = document.querySelector("#scoreDiv h2");
 const timer = document.querySelector(".timer");
 const question = document.querySelector(".question");
 const options = document.querySelectorAll(".option");
+const nextQuestion = document.querySelector("button");
+
 let questionNumber = 0;
-let counter = 5;
+let counter = 10;
 let id1, id2;
 const userAnswers = [];
 
 const data = [
   {
-    question: "2+2",
-    answer: 4,
-    options: [1, 2, 3, 4],
+    question: "What is the capital of India?",
+    answer: "New Delhi",
+    options: ["Jaipur", "Mumbai", "New Delhi", "Kolkata"],
   },
   {
-    question: "2+2+2",
-    answer: 6,
-    options: [6, 5, 4, 3],
+    question: "Which is the national bird of India?",
+    answer: "Peacock",
+    options: ["Sparrow", "Peacock", "Pigeon", "Crow"],
   },
   {
-    question: "2+2*2",
-    answer: 8,
-    options: [6, 7, 8, 10],
+    question: "Who won the 2024 Cricket T20 world cup??",
+    answer: "India",
+    options: ["Australia", "South Africa", "West Indies", "India"],
   },
   {
-    question: "2*2-4",
-    answer: 0,
-    options: [1, 0, 2, 4],
-  },
-  {
-    question: "4*4*4",
-    answer: 64,
-    options: [12, 444, 64, 62],
+    question: "Who is the president of India?",
+    answer: "Draupadi Murmu",
+    options: [
+      "APJ Abdul Kalam",
+      "Narendra Modi",
+      "Draupadi Murmu",
+      "Rahul Gandhi",
+    ],
   },
 ];
 
 displayQuestionAndOptions();
 // TO DISPLAY TIMER AT START
-timer.innerHTML = counter--; // 5
+timer.innerHTML = counter--; // 10
 displayTimer();
 
-id1 = setInterval(changeQuestion, 5000);
+id1 = setInterval(changeQuestion, 10000);
+
+// STORING USER ANSWER
+for (let i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", storeUserAnswer);
+}
+
+nextQuestion.addEventListener("click", changeQuestion);
 
 function changeQuestion() {
   if (questionNumber === data.length - 1) {
     clearInterval(id1); // To stop question cycle
   }
+  counter = 10;
+  timer.innerHTML = counter--;
   displayQuestionAndOptions();
 }
 
@@ -65,7 +76,7 @@ function displayQuestionAndOptions() {
 function displayTimer() {
   id2 = setInterval(() => {
     if (counter === 0) {
-      counter = 5;
+      counter = 10;
       timer.innerHTML = counter--;
       if (questionNumber === data.length) {
         clearInterval(id2); // To stop timer cycle
@@ -80,11 +91,6 @@ function displayTimer() {
   }, 1000);
 }
 
-// STORING USER ANSWER
-for (let i = 0; i < options.length; i++) {
-  options[i].addEventListener("click", storeUserAnswer);
-}
-
 function storeUserAnswer(e) {
   userAnswers.push(e.target.innerHTML);
   console.log(userAnswers);
@@ -93,7 +99,7 @@ function storeUserAnswer(e) {
 function displayScore() {
   let score = 0;
   for (let i = 0; i < userAnswers.length; i++) {
-    if (Number(userAnswers[i]) === data[i].answer) score++;
+    if (userAnswers[i] === data[i].answer) score++;
   }
   scoreDivH2.innerHTML = "You have scored " + score + " out of " + data.length;
 }
