@@ -3,3 +3,56 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: aquamarine;
+}
+#quizDiv,
+#scoreDiv {
+  width: 50%;
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: #fff;
+  position: relative;
+}
+#scoreDiv {
+  display: none;
+}
+.timer {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f00;
+  color: #fff;
+  font-size: 1.5rem;
+}
+.question {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.option {
+  width: 46%;
+  padding: 0.5rem;
+  border-radius: 20px;
+  background-color: azure;
+  text-align: center;
+  transition: all 400ms;
+  cursor: pointer;
+}
+.option:hover {
+  transform: scale(1.1);
+  background-color: #000;
+  color: #fff;
+}
