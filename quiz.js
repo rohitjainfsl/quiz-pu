@@ -53,12 +53,13 @@ function changeQuestion() {
 
 function displayQuestionAndOptions() {
   //TO DISPLAY QUESTION
-  question.innerHTML = data[questionNumber++].question;
+  question.innerHTML = data[questionNumber].question;
 
   //TO DISPLAY OPTIONS
   for (let i = 0; i < options.length; i++) {
     options[i].innerHTML = data[questionNumber].options[i];
   }
+  questionNumber++;
 }
 
 function displayTimer() {
