@@ -2,15 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 body {
   background-color: aquamarine;
 }
-#quizDiv,
-#scoreDiv {
+#wrapper {
   width: 50%;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+#quizDiv, #scoreDiv {
+  width: 100%;
   text-align: center;
   margin: 2rem auto;
   padding: 1rem;
@@ -56,10 +64,9 @@ body {
 }
 .option:hover {
   transform: scale(1.1);
-  background-color: #000;
+  background-color: green;
   color: #fff;
 }
-
 button {
   margin: 1rem 0;
   padding: 0.5rem 1rem;
@@ -70,4 +77,18 @@ button {
   transition: all 400ms;
   cursor: pointer;
   box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.4);
+}
+button:hover {
+  background-color: rgb(133, 238, 133);
+  border-radius: 22px;
+  box-shadow: 5px rgba(12, 12, 12, 0.4);
+  transform: scale(1.1);
+  border: 2px solid rgb(94, 211, 110);
+}
+footer {
+  margin-top: 2rem;
+}
+footer p {
+  font-size: 0.875rem;
+  color: #333;
 }
