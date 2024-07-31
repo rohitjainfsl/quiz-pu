@@ -97,3 +97,28 @@ button:hover{
   width: 100%;
   bottom: 0;
 }
+
+/* style.css */
+
+/* Center the page */
+#wrapper {
+  max-width: 800px; /* adjust the width to your liking */
+  margin: 40px auto; /* add some margin top and bottom, and center horizontally */
+  padding: 20px; /* add some padding around the content */
+  background-color: #f9f9f9; /* add a light gray background */
+  border: 1px solid #ddd; /* add a light gray border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* add a subtle shadow */
+}
+
+/* Style the footer */
+footer {
+  background-color: #333; /* dark gray background */
+  color: #fff; /* white text */
+  padding: 10px; /* add some padding */
+  text-align: center; /* center the text */
+  clear: both; /* make sure the footer clears any floats */
+}
+
+footer strong {
+  color: #ff69b4; /* pink color for the name */
+}
