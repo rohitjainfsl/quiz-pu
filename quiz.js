@@ -8,7 +8,7 @@ const nextQuestion = document.querySelector("button");
 
 let questionNumber = 0;
 let counter = 10;
-let id1, id2;
+let timerIntervalId;
 const userAnswers = [];
 
 const data = [
@@ -23,7 +23,7 @@ const data = [
     options: ["Sparrow", "Peacock", "Pigeon", "Crow"],
   },
   {
-    question: "Who won the 2024 Cricket T20 world cup??",
+    question: "Who won the 2024 Cricket T20 world cup?",
     answer: "India",
     options: ["Australia", "South Africa", "West Indies", "India"],
   },
@@ -39,69 +39,79 @@ const data = [
   },
 ];
 
-displayQuestionAndOptions();
-// TO DISPLAY TIMER AT START
-timer.innerHTML = counter--; // 10
-displayTimer();
-
-id1 = setInterval(changeQuestion, 10000);
-
-// STORING USER ANSWER
-for (let i = 0; i < options.length; i++) {
-  options[i].addEventListener("click", storeUserAnswer);
-}
-
-nextQuestion.addEventListener("click", changeQuestion);
-
-function changeQuestion() {
-  if (questionNumber === data.length - 1) {
-    clearInterval(id1); // To stop question cycle
-  }
-  counter = 10;
-  timer.innerHTML = counter--;
+function startQuiz() {
   displayQuestionAndOptions();
+  timer.innerHTML = counter;
+  startTimer();
+
+  options.forEach(option => option.addEventListener("click", storeUserAnswer));
+  nextQuestion.addEventListener("click", nextQuestionHandler);
 }
 
-function displayQuestionAndOptions() {
-  //TO DISPLAY QUESTION
-  question.innerHTML = data[questionNumber].question;
+function startTimer() {
+  timerIntervalId = setInterval(displayTimer, 1000);
+}
 
-  //TO DISPLAY OPTIONS
-  for (let i = 0; i < options.length; i++) {
-    options[i].innerHTML = data[questionNumber].options[i];
-  }
-  questionNumber++;
+function stopTimer() {
+  clearInterval(timerIntervalId);
 }
 
 function displayTimer() {
-  id2 = setInterval(() => {
-    if (counter === 0) {
-      counter = 10;
-      timer.innerHTML = counter--;
-      if (questionNumber === data.length) {
-        clearInterval(id2); // To stop timer cycle
-        quizDiv.style.display = "none";
-        scoreDiv.style.display = "block";
+  if (counter <= 0) {
+    clearInterval(timerIntervalId);
+    nextQuestionHandler();
+  } else {
+    timer.innerHTML = counter--;
+  }
+}
 
-        displayScore();
-      }
-    } else {
-      timer.innerHTML = counter--;
-    }
-  }, 1000);
+function displayQuestionAndOptions() {
+  question.innerHTML = data[questionNumber].question;
+
+  options.forEach((option, index) => {
+    option.innerHTML = data[questionNumber].options[index];
+    option.classList.remove("selected");
+  });
 }
 
 function storeUserAnswer(e) {
-  userAnswers.push(e.target.innerHTML);
-  console.log(userAnswers);
+  // Store the selected answer and highlight it
+  userAnswers[questionNumber] = e.target.innerHTML;
+  options.forEach(option => option.classList.remove("selected"));
+  e.target.classList.add("selected");
+
+  // Stop the timer as soon as an answer is selected
+  stopTimer();
+
+  // Automatically go to the next question
+  nextQuestionHandler();
+}
+
+function nextQuestionHandler() {
+  // Move to the next question
+  if (questionNumber < data.length - 1) {
+    questionNumber++;
+    counter = 10;
+    timer.innerHTML = counter;
+    displayQuestionAndOptions();
+    startTimer();
+  } else {
+    showScore();
+  }
+}
+
+function showScore() {
+  quizDiv.style.display = "none";
+  scoreDiv.style.display = "block";
+  displayScore();
 }
 
 function displayScore() {
   let score = 0;
-  for (let i = 0; i < userAnswers.length; i++) {
-    if (userAnswers[i] === data[i].answer) score++;
-  }
-  scoreDivH2.innerHTML = "You have scored " + score + " out of " + data.length;
+  userAnswers.forEach((answer, index) => {
+    if (answer === data[index].answer) score++;
+  });
+  scoreDivH2.innerHTML = `You have scored ${score} out of ${data.length}`;
 }
 
-//HOISTING: to take var declarations & function definitions up top
+startQuiz();
