@@ -39,8 +39,10 @@ const data = [
   },
 ];
 
+
 displayQuestionAndOptions();
 // TO DISPLAY TIMER AT START
+
 timer.innerHTML = counter--; // 10
 displayTimer();
 

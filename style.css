@@ -6,11 +6,16 @@
     "Lucida Sans", Arial, sans-serif;
 }
 body {
-  background-color:aquamarine;
-  text-align: center;
+
+main
+  background-color: rgb(71, 167, 235);
 }
 #wrapper{
-  margin-top: 200px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 150px;
+
 }
 #quizDiv,
 #scoreDiv {
