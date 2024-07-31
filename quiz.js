@@ -30,12 +30,22 @@ const data = [
   {
     question: "Who is the president of India?",
     answer: "Draupadi Murmu",
-    options: [
-      "APJ Abdul Kalam",
-      "Narendra Modi",
-      "Draupadi Murmu",
-      "Rahul Gandhi",
-    ],
+    options: ["APJ Abdul Kalam","Narendra Modi","Draupadi Murmu","Rahul Gandhi",],
+  },
+  {
+  question: "What is the capital of France?",
+  answer: "Paris",
+  options:["Rome","Berlin","Paris","Madrid",],
+  },
+  {
+  question: Which planet is known as the Red Planet?,
+  answer:"Mars",
+  options: ["Venus", "Mars", "Jupiter", "Saturn"],
+  },
+  {
+  question:"Who wrote the play 'Romeo and Juliet"?,
+  answer:"William Shakespeare",
+  options: ["Charles Dickens", "William Shakespeare", "Mark Twain", "Jane Austen"],
   },
 ];
 
