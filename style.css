@@ -84,8 +84,11 @@ button {
 }
 
 footer{
+  position:absolute;
+  bottom: 0;
+  background-color: #000;
+  color: white;
   text-align: center;
-  color: orangered;
-  background-color: wheat;
-
+  width: 100%;
 }
+
