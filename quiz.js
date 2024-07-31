@@ -13,7 +13,7 @@ const userAnswers = [];
 
 const data = [
   {
-    question: "What is the capital of India?",
+    question: "What is the your favourite city?",
     answer: "New Delhi",
     options: ["Jaipur", "Mumbai", "New Delhi", "Kolkata"],
   },
