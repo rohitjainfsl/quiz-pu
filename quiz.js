@@ -38,7 +38,7 @@ const data = [
   options:["Rome","Berlin","Paris","Madrid",],
   },
   {
-  question: Which planet is known as the Red Planet?,
+  question:"Which planet is known as the Red Planet?",
   answer:"Mars",
   options: ["Venus", "Mars", "Jupiter", "Saturn"],
   },
