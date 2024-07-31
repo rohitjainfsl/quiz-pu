@@ -5,11 +5,7 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-body {
 
-main
-  background-color: rgb(71, 167, 235);
-}
 #wrapper{
   justify-content: center;
   align-items: center;
@@ -79,4 +75,9 @@ button {
   transition: all 400ms;
   cursor: pointer;
   box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.4);
+}
+
+footer{
+  display: flex;
+  justify-content: center;
 }
